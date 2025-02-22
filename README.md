@@ -55,6 +55,6 @@
 </head>
 <body>
     <h1 class="name">Pallavi Amarlapudi</h1>
-    <p class="subtitle">Welcome to My Portfolio</p>
+    <p class="subtitle">Pallavi Loves You :) </p>
 </body>
 </html>
