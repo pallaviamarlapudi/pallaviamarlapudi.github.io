@@ -3,69 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pallavi Amarlapudi's Portfolio</title>
+    <title>Portfolio</title>
     <style>
-        body {
-            background: #FCFBF1;
-            color: #8B8E74;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 200vh; /* Making it scrollable */
-            position: relative;
-        }
-        h1 {
-            color: #BC705B;
-            font-size: 3rem;
-            animation: fadeIn 2s;
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        /* Home Button Styling */
-        .home-button {
-            position: fixed;
-            top: 25px;
-            left: 25px;
-            width: 60px;
-            height: 60px;
-            cursor: pointer;
-            z-index: 1000;
-        }
-        .home-button img {
-            width: 60px; /* Adjust this value */
-            height: 60px; /* Adjust this value */
-            object-fit: contain; /* Ensures the image keeps its proportions */
-        }
-        .home-button:hover {
-            opacity: 0.8;
-        }
+        body { margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; font-family: Arial, sans-serif; }
+        .home-button { position: fixed; top: 10px; left: 10px; width: 50px; }
     </style>
 </head>
 <body>
-
-    <!-- Home Button with Custom Image -->
-    <a href="#" class="home-button" onclick="scrollToTop()">
-        <img src="https://pallaviamarlapudi.github.io/PA.png" alt="Home">
+    <a href="#" class="home-button" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+        <img src="https://pallaviamarlapudi.github.io/PA.png" alt="Home" width="50">
     </a>
-
-    <h1 id="top">Hi, I'm Pallavi :)</h1>
-
-    <script>
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
-
+    <h1>Hi, I'm Pallavi</h1>
 </body>
 </html>
