@@ -3,16 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pallavi's Portfolio</title>
+    <title>Gradient Scroll Effect</title>
     <style>
-        body { margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; font-family: Arial, sans-serif; }
-        .home-button { position: fixed; top: 25px; left: 25px; width: 60px; }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 400vh; /* Makes the page scrollable */
+            background: white;
+        }
+
+        /* Gradient overlay effect */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh; /* Covers the full viewport height */
+            background: linear-gradient(to bottom, #032e64, white);
+            transition: opacity 0.5s ease-out;
+        }
+
+        /* Home button (logo) */
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* Scrollable content */
+        .content {
+            position: relative;
+            height: 400vh; /* Full scrollable height */
+            width: 100%;
+        }
     </style>
 </head>
 <body>
-    <a href="#" class="home-button" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
-        <img src="https://pallaviamarlapudi.github.io/PA.png" alt="Home" width="60">
-    </a>
-    <h1>Hi, I'm Pallavi</h1>
+
+    <!-- Home Button (Logo) -->
+    <img src="https://pallaviamarlapudi.github.io/PA Home.png" alt="Home" class="home-button" onclick="scrollToTop()">
+
+    <!-- Gradient Layer -->
+    <div class="gradient-bg" id="gradient"></div>
+
+    <!-- Scrollable Content Area -->
+    <div class="content"></div>
+
+    <script>
+        // Handles the gradient fade-out effect on scroll
+        window.addEventListener("scroll", function() {
+            let scrollPosition = window.scrollY;
+            let fadePoint = window.innerHeight * 0.5; // Adjust how quickly it disappears
+            let opacityValue = 1 - (scrollPosition / fadePoint);
+            
+            document.getElementById("gradient").style.opacity = Math.max(opacityValue, 0);
+        });
+
+        // Scrolls back to the top when clicking the Home button
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    </script>
+
 </body>
 </html>
