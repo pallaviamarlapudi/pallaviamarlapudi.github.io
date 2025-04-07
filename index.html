@@ -1,72 +1,521 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gradient Scroll Effect</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            height: 400vh; /* Makes the page scrollable */
-            background: white;
-        }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-        /* Gradient overlay effect */
-        .gradient-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh; /* Covers the full viewport height */
-            background: linear-gradient(to bottom, #032e64, white);
-            transition: opacity 0.5s ease-out;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        /* Home button (logo) */
-        .home-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 60px;
-            cursor: pointer;
-            z-index: 10;
-        }
+    body {
+      background-color: #F9F8F5;
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Manrope', sans-serif;
+      background-image:
+        repeating-linear-gradient(to right, #ffffff 0px, #ffffff 2px, transparent 2px, transparent 40px),
+        repeating-linear-gradient(to bottom, #ffffff 0px, #ffffff 2px, transparent 2px, transparent 40px);
+      background-size: 37.5px 37.5px;
+      padding-bottom: 100px;
+    }
 
-        /* Scrollable content */
-        .content {
-            position: relative;
-            height: 400vh; /* Full scrollable height */
-            width: 100%;
-        }
-    </style>
+    .navbar-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: #F9F8F5;
+      background-image:
+        repeating-linear-gradient(to right, #ffffff 0px, #ffffff 2px, transparent 2px, transparent 40px),
+        repeating-linear-gradient(to bottom, #ffffff 0px, #ffffff 2px, transparent 2px, transparent 40px);
+      background-size: 37.5px 37.5px;
+    }
+
+    .navbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 75px 0 75px;
+      box-sizing: border-box;
+    }
+
+    .top-line {
+      width: 100%;
+      height: 1.5px;
+      background-color: black;
+      margin-top: 15px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #000000;
+    }
+
+    .nav-links a {
+      margin-left: 35px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #000000;
+    }
+
+    .nav-links a.active {
+      border-bottom: 2px solid #e54860;
+      padding-bottom: 2px;
+    }
+
+    .content-container {
+      max-width: 1200px;
+      padding-left: 75px;
+      padding-right: 75px;
+      margin-top: 50px;
+      box-sizing: border-box;
+    }
+
+    .center-text {
+      font-size: 4rem;
+      font-weight: 600;
+      color: #000000;
+      text-align: left;
+    }
+
+    .about-text {
+      display: block;
+      font-family: 'Roboto', sans-serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: #000000;
+      margin-top: 40px;
+      margin-bottom: 0;
+    }
+
+    .roles-wrapper {
+      padding-left: 75px;
+      padding-right: 75px;
+      box-sizing: border-box;
+    }
+
+    .roles-container {
+      display: flex;
+      justify-content: flex-start;
+      gap: 5px;
+      margin-top: 10px;
+    }
+
+    .loader-wrapper {
+      width: 250px;
+      height: 250px;
+    }
+
+    .loader {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: inline-block;
+      margin: -16px;
+      cursor: default;
+    }
+
+    .loader svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .loader svg rect {
+      fill: none;
+      stroke: #e54860;
+      stroke-width: 2px;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      stroke-dasharray: 192 64 192 64;
+      stroke-dashoffset: 0;
+      animation: pathRect 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+    }
+
+    .role-line {
+      font-family: 'Roboto', sans-serif;
+      font-size: 9px;
+      font-weight: 400;
+      fill: black;
+    }
+
+    @keyframes pathRect {
+      25% { stroke-dashoffset: 64; }
+      50% { stroke-dashoffset: 128; }
+      75% { stroke-dashoffset: 192; }
+      100% { stroke-dashoffset: 256; }
+    }
+
+    @media (max-width: 1200px) {
+      .roles-container {
+        justify-content: center;
+      }
+
+      .loader-wrapper {
+        width: 200px;
+        height: 200px;
+      }
+
+      .role-line {
+        font-size: 7px;
+      }
+    }
+
+.timeline-wrapper {
+  position: relative;
+  height: 2000px;
+  width: 100px;
+  margin: 25px 0 100px 350px; /* top right bottom left */
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background-color: #000;
+}
+
+.timeline-square {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  border-radius: 0px;
+  border: 2px solid black;
+}
+
+/* Connector Wrapper */
+.timeline-connector {
+  position: absolute;
+  right: 100%; /* place left of square */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+/* Pink line */
+.connector-line {
+  height: 2px;
+  width: 200px; /* adjust as needed */
+  background-color: #e54860;
+  margin: 2px 1px;
+}
+
+.timeline-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #000000;
+  white-space: nowrap;
+  position: relative;
+}
+
+.top-text {
+  transform: translateX(-30px);
+  font-family: 'Roboto', sans-serif;   /* Example: Sleek font */
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.bottom-text {
+  transform: translateX(-30px);
+  font-family: 'Manrope', sans-serif;    /* Example: Simpler font */
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000000;
+}
+
+.timeline-right {
+  position: absolute;
+  left: 100%; /* start from the right edge of the square */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  margin-left: 25px; /* optional: add spacing if needed */
+}
+
+
+/* Pink connector line (right) */
+.right-connector-line {
+  width: 50px;
+  height: 2px;
+  background-color: #e54860;
+}
+
+.right-box {
+  border: 1.5px solid #000000;
+  padding: 20px 24px;
+  background-color: #fff;
+  width: 600px;
+  border-radius: 6px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* spacing between title and bullet list */
+}
+
+.role-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #e54860;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2; /* reduce line spacing */
+}
+
+.role-subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000000;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2; /* tighten spacing */
+}
+
+
+.role-points {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem;
+  margin: 0;
+  padding-left: 20px;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* space between bullets */
+}
+
+
+  </style>
 </head>
 <body>
+  <!-- ✅ Sticky wrapper for nav and line -->
+  <div class="navbar-wrapper">
+    <div class="navbar">
+      <div class="logo">Pallavi Amarlapudi</div>
+      <div class="nav-links">
+        <a href="#" class="active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#">Projects</a>
+        <a href="#">Resume</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="top-line"></div>
+  </div>
 
-    <!-- Home Button (Logo) -->
-    <img src="https://pallaviamarlapudi.github.io/PA.png" alt="Home" class="home-button" onclick="scrollToTop()">
+  <!-- Home Section -->
+  <div class="content-container" id="home">
+    <div class="center-text">
+      <span style="display: block;">Hi,</span>
+      <span style="display: block;">
+        I'm <span style="color: #e54860;">Pallavi Amarlapudi</span>
+      </span>
+    </div>
 
-    <!-- Gradient Layer -->
-    <div class="gradient-bg" id="gradient"></div>
+    <div style="margin-top: 40px; font-size: 1.2rem; line-height: 1.6; color: #000000; font-family: 'Roboto', sans-serif;">
+      <p>
+        Identity Analyst turned Business Analytics Professional, I develop secure and scalable solutions that bridge the gap between business goals and technical delivery. Backed by strong project management skills and a knack for turning raw data into actionable insights, I thrive at the intersection of data, governance, and operations – driving measurable impact.
+      </p>
 
-    <!-- Scrollable Content Area -->
-    <div class="content"></div>
+      <!-- About Anchor Target -->
+      <a id="about"></a>
+      <p class="about-text">About</p>
+    </div>
+  </div>
 
-    <script>
-        // Handles the gradient fade-out effect on scroll
-        window.addEventListener("scroll", function() {
-            let scrollPosition = window.scrollY;
-            let fadePoint = window.innerHeight * 0.5; // Adjust how quickly it disappears
-            let opacityValue = 1 - (scrollPosition / fadePoint);
-            
-            document.getElementById("gradient").style.opacity = Math.max(opacityValue, 0);
-        });
+  <!-- Role Boxes Section -->
+  <div class="roles-wrapper">
+    <div class="roles-container">
+      <div class="loader-wrapper">
+        <div class="loader">
+          <svg viewBox="0 0 80 80">
+            <rect x="6" y="6" width="60" height="60"></rect>
+            <text x="44%" y="42%" text-anchor="middle" class="role-line">Business</text>
+            <text x="44%" y="57%" text-anchor="middle" class="role-line">Data Analyst</text>
+          </svg>
+        </div>
+      </div>
 
-        // Scrolls back to the top when clicking the Home button
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-    </script>
+      <div class="loader-wrapper">
+        <div class="loader">
+          <svg viewBox="0 0 80 80">
+            <rect x="6" y="6" width="60" height="60"></rect>
+            <text x="44%" y="42%" text-anchor="middle" class="role-line">Identity &</text>
+            <text x="44%" y="57%" text-anchor="middle" class="role-line">Risk Analyst</text>
+          </svg>
+        </div>
+      </div>
 
+      <div class="loader-wrapper">
+        <div class="loader">
+          <svg viewBox="0 0 80 80">
+            <rect x="6" y="6" width="60" height="60"></rect>
+            <text x="44%" y="42%" text-anchor="middle" class="role-line">ML / AI</text>
+            <text x="44%" y="57%" text-anchor="middle" class="role-line">Engineer</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="loader-wrapper">
+        <div class="loader">
+          <svg viewBox="0 0 80 80">
+            <rect x="6" y="6" width="60" height="60"></rect>
+            <text x="44%" y="42%" text-anchor="middle" class="role-line">Project</text>
+            <text x="44%" y="57%" text-anchor="middle" class="role-line">Manager</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="loader-wrapper">
+        <div class="loader">
+          <svg viewBox="0 0 80 80">
+            <rect x="6" y="6" width="60" height="60"></rect>
+            <text x="44%" y="42%" text-anchor="middle" class="role-line">Dashboard</text>
+            <text x="44%" y="57%" text-anchor="middle" class="role-line">Developer</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Experience Timeline -->
+<div class="timeline-wrapper">
+  <div class="timeline-line">
+
+    <div class="timeline-square" style="top: 11%;">
+  <div class="timeline-connector">
+    <div class="timeline-text top-text">Hartford, CT</div>
+    <div class="connector-line"></div>
+    <div class="timeline-text bottom-text">Aug 2024 - Dec 2024</div>
+  </div>
+</div>
+<div class="timeline-right"style="top: 11%;">
+  <div class="right-connector-line"></div>
+  <div class="right-box">
+    <div class="role-title">PEPSICO</div>
+    <div class="role-subtitle">Project Manager - Business Data Analyst</div>
+    <ul class="role-points">
+      <li>Led a cross-functional team in partnership with PepsiCo R&D to optimize PET bottle design by addressing failure patterns in quality testing through predictive modeling.</li>
+      <li>Consolidated and preprocessed multi - source manufacturing data on bottle thickness, weight, and shape using Python, JMP & Excel, followed by exploratory data analysis (EDA) to identify key performance drivers.</li>
+      <li>Developed and evaluated 200+ machine learning models using Logistic Regression, Support Vector Machines (SVMs), Random Forests, k-Nearest Neighbors (KNN), Linear Regression, Neural Networks, Decision Trees, Gradient Boosting, and ensemble techniques - achieving 90% average accuracy in predicting quality outcomes.</li>
+      <li>Generated data - driven design recommendations by identifying optimal combinations of thickness, weight, and shape, which streamlined R&D processes and accelerated decision - making in packaging design.</li>
+    </ul>
+  </div>
+</div>
+
+    <div class="timeline-square" style="top: 33%;">
+  <div class="timeline-connector">
+    <div class="timeline-text top-text">Hartford, CT</div>
+    <div class="connector-line"></div>
+    <div class="timeline-text bottom-text">Jan 2024 - May 2025</div>
+  </div>
+</div>
+<div class="timeline-right"style="top: 33%;">
+  <div class="right-connector-line"></div>
+  <div class="right-box">
+    <div class="role-title">University of Connecticut</div>
+    <div class="role-subtitle">Master of Science - Business Analytics and Project Management</div>
+    <ul class="role-points">
+      <li><strong>Concentration - </strong>Business Data Science</li>
+      <li><strong>GPA -</strong>3.9</li>
+      <li><strong>Relevant Coursework - </strong>Data Management and Business Process Modeling, Statistics in Business Analytics, Predictive Modeling, Business Decision Modeling, Data Mining and Time Series Forecasting, Introduction to Project Management, Agile Project Management and Methodologies, Technical Communications in Business Analytics and Project Management, Advanced Business Analytics and Project Management, Visual Analytics, Big Data Analytics with Cloud Computing, Data Science using Python, and Special Topics - Generative AI for Business.</li>
+    </ul>
+  </div>
+</div>
+
+    <div class="timeline-square" style="top: 55%;">
+  <div class="timeline-connector">
+    <div class="timeline-text top-text">Hyderabad, India</div>
+    <div class="connector-line"></div>
+    <div class="timeline-text bottom-text">Nov 2021 - Aug 2023</div>
+  </div>
+</div>
+<div class="timeline-right"style="top: 55%;">
+  <div class="right-connector-line"></div>
+  <div class="right-box">
+    <div class="role-title">DELOITTE</div>
+    <div class="role-subtitle">Risk & Financial Advisory Analyst</div>
+    <ul class="role-points">
+      <li>Engineered data - driven solutions to support access certification for 120+ high - impact applications, aligning security practices with compliance requirements through cross - functional coordination and automated data workflows.</li>
+      <li>Coordinated full - cycle entitlement reviews (quarterly, semi - annual, and annual), managing data preparation, stakeholder communication, workflow execution via SharePoint, and timely closure of certifications.</li>
+      <li>Processed and refined large - scale access datasets using SQL and Excel automation, enabling accurate analysis, discrepancy resolution, and actionable insights for access governance decisions.</li>
+      <li>Enhanced identity governance maturity by onboarding applications into SailPoint IdentityNow, utilizing JIRA for agile task tracking, and implementing continuous improvements that boosted efficiency and reduced manual workloads.</li>
+    </ul>
+  </div>
+</div>
+
+    <div class="timeline-square" style="top: 77%;">
+  <div class="timeline-connector">
+    <div class="timeline-text top-text">Hyderabad, India</div>
+    <div class="connector-line"></div>
+    <div class="timeline-text bottom-text">Feb 2021 - Nov 2021</div>
+  </div>
+</div>
+<div class="timeline-right"style="top: 77%;">
+  <div class="right-connector-line"></div>
+  <div class="right-box">
+    <div class="role-title">ACCENTURE</div>
+    <div class="role-subtitle">Data Protection & PMO Associate</div>
+    <ul class="role-points">
+      <li>Delivered cross - functional support across IAM and PMO functions, managing identity lifecycle operations via Active Directory for 5+ departments, including onboarding/offboarding, access provisioning, and role-based project assignments.</li>
+      <li>Developed dynamic dashboards and automated reports using Power BI and Excel, converting incident and performance data into actionable insights and streamlining reporting processes for leadership visibility.</li>
+      <li>Executed and tracked change/incident requests through Jira and ServiceNow, ensuring SLA adherence, precise documentation, and effective coordination between technical teams and project stakeholders.</li>
+    </ul>
+  </div>
+</div>
+
+    <div class="timeline-square" style="top: 93.5%;">
+  <div class="timeline-connector">
+    <div class="timeline-text top-text">Hyderabad, India</div>
+    <div class="connector-line"></div>
+    <div class="timeline-text bottom-text">Aug 2016 - Sep 2020</div>
+  </div>
+</div>
+<div class="timeline-right"style="top: 93.5%;">
+  <div class="right-connector-line"></div>
+  <div class="right-box">
+    <div class="role-title">Vasavi College of Engineering</div>
+    <div class="role-subtitle">Bachelor of Engineering - Electrical & Electronics Engineering</div>
+    <ul class="role-points">
+      <li><strong>Relevant Coursework - </strong>- Introduction to Software Engineering, Introduction to Database Management Systems, Fundamentals of Data Structures, Computer Programming & Problem Solving Using C, and Object Oriented Programming using C++.
+Aug 2016 - Sep 2020
+</li>
+    </ul>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+  <!-- Script: Toggle underline when nav links are clicked -->
+  <script>
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
