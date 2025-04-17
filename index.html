@@ -48,7 +48,7 @@
     }
 
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: #000000;
     }
@@ -66,7 +66,7 @@
     }
 
     .content-container {
-      max-width: 1200px;
+      max-width: 1120px;
       padding-left: 75px;
       padding-right: 75px;
       margin-top: 50px;
@@ -74,7 +74,7 @@
     }
 
     .center-text {
-      font-size: 4rem;
+      font-size: 55px;
       font-weight: 600;
       color: #000000;
       text-align: left;
@@ -83,10 +83,10 @@
     .about-text {
       display: block;
       font-family: 'Roboto', sans-serif;
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 300;
       color: #000000;
-      margin-top: 40px;
+      margin-top: 30px;
       margin-bottom: 0;
     }
 
@@ -100,12 +100,12 @@
       display: flex;
       justify-content: flex-start;
       gap: 5px;
-      margin-top: 10px;
+      margin-top: 15px;
     }
 
     .loader-wrapper {
-      width: 250px;
-      height: 250px;
+      width: 200px;
+      height: 200px;
     }
 
     .loader {
@@ -136,8 +136,8 @@
 
     .role-line {
       font-family: 'Roboto', sans-serif;
-      font-size: 9px;
-      font-weight: 400;
+      font-size: 8px;
+      font-weight: 500;
       fill: black;
     }
 
@@ -167,7 +167,7 @@
   position: relative;
   height: 2000px;
   width: 100px;
-  margin: 25px 0 100px 350px; /* top right bottom left */
+  margin: 15px 0 100px 250px; /* top right bottom left */
 }
 
 .timeline-line {
@@ -258,12 +258,12 @@
   border: 1.5px solid #000000;
   padding: 20px 24px;
   background-color: #fff;
-  width: 600px;
-  border-radius: 6px;
+  width: 700px;
+  border-radius: 0px;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.05);
   font-family: 'Roboto', sans-serif;
   font-style: italic;
-  line-height: 1.6;
+  line-height: 1.4;
   display: flex;
   flex-direction: column;
   gap: 16px; /* spacing between title and bullet list */
@@ -303,6 +303,122 @@
 }
 
 
+.project-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 40px 75px;
+}
+
+.project-card {
+  position: relative;
+  width: 340px;
+  height: 240px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+.hover-title {
+  position: absolute;
+  bottom: 0;
+  background: rgba(229, 72, 96, 0.85);
+  color: white;
+  width: 100%;
+  text-align: centre;
+  padding: 10px;
+  padding-left: 20px;   /* adjust as needed */
+  padding-right: 20px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .hover-title {
+  opacity: 1;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 60px auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 70%;
+  max-width: 1000px;
+  border-radius: 8px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.modal-content h2 {
+  color: #000000;
+  margin-top: 0;
+}
+
+.modal-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.modal-content ul {
+  padding-left: 20px;
+  margin-top: 0;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.role-points {
+  font-style: italic;
+}
+
+.modal .role-points {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #000;
+  text-align: left;
+  margin-top: 12px;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  line-height: 1.6;
+}
+
   </style>
 </head>
 <body>
@@ -330,7 +446,7 @@
       </span>
     </div>
 
-    <div style="margin-top: 40px; font-size: 1.2rem; line-height: 1.6; color: #000000; font-family: 'Roboto', sans-serif;">
+    <div style="margin-top: 20px; font-size: 18px; line-height: 1.6; color: #000000; font-family: 'Roboto', sans-serif;">
       <p>
         Identity Analyst turned Business Analytics Professional, I develop secure and scalable solutions that bridge the gap between business goals and technical delivery. Backed by strong project management skills and a knack for turning raw data into actionable insights, I thrive at the intersection of data, governance, and operations – driving measurable impact.
       </p>
@@ -400,14 +516,14 @@
 <div class="timeline-wrapper">
   <div class="timeline-line">
 
-    <div class="timeline-square" style="top: 11%;">
+    <div class="timeline-square" style="top: 12.5%;">
   <div class="timeline-connector">
     <div class="timeline-text top-text">Hartford, CT</div>
     <div class="connector-line"></div>
     <div class="timeline-text bottom-text">Aug 2024 - Dec 2024</div>
   </div>
 </div>
-<div class="timeline-right"style="top: 11%;">
+<div class="timeline-right"style="top: 12.5%;">
   <div class="right-connector-line"></div>
   <div class="right-box">
     <div class="role-title">PEPSICO</div>
@@ -421,14 +537,14 @@
   </div>
 </div>
 
-    <div class="timeline-square" style="top: 33%;">
+    <div class="timeline-square" style="top: 34%;">
   <div class="timeline-connector">
     <div class="timeline-text top-text">Hartford, CT</div>
     <div class="connector-line"></div>
     <div class="timeline-text bottom-text">Jan 2024 - May 2025</div>
   </div>
 </div>
-<div class="timeline-right"style="top: 33%;">
+<div class="timeline-right"style="top: 34%;">
   <div class="right-connector-line"></div>
   <div class="right-box">
     <div class="role-title">University of Connecticut</div>
@@ -462,14 +578,14 @@
   </div>
 </div>
 
-    <div class="timeline-square" style="top: 77%;">
+    <div class="timeline-square" style="top: 76.5%;">
   <div class="timeline-connector">
     <div class="timeline-text top-text">Hyderabad, India</div>
     <div class="connector-line"></div>
     <div class="timeline-text bottom-text">Feb 2021 - Nov 2021</div>
   </div>
 </div>
-<div class="timeline-right"style="top: 77%;">
+<div class="timeline-right"style="top: 76.5%;">
   <div class="right-connector-line"></div>
   <div class="right-box">
     <div class="role-title">ACCENTURE</div>
@@ -482,22 +598,20 @@
   </div>
 </div>
 
-    <div class="timeline-square" style="top: 93.5%;">
+    <div class="timeline-square" style="top: 93%;">
   <div class="timeline-connector">
     <div class="timeline-text top-text">Hyderabad, India</div>
     <div class="connector-line"></div>
     <div class="timeline-text bottom-text">Aug 2016 - Sep 2020</div>
   </div>
 </div>
-<div class="timeline-right"style="top: 93.5%;">
+<div class="timeline-right"style="top: 93%;">
   <div class="right-connector-line"></div>
   <div class="right-box">
     <div class="role-title">Vasavi College of Engineering</div>
     <div class="role-subtitle">Bachelor of Engineering - Electrical & Electronics Engineering</div>
     <ul class="role-points">
-      <li><strong>Relevant Coursework - </strong>- Introduction to Software Engineering, Introduction to Database Management Systems, Fundamentals of Data Structures, Computer Programming & Problem Solving Using C, and Object Oriented Programming using C++.
-Aug 2016 - Sep 2020
-</li>
+      <li><strong>Relevant Coursework - </strong>Introduction to Software Engineering, Introduction to Database Management Systems, Fundamentals of Data Structures, Computer Programming & Problem Solving Using C, and Object Oriented Programming using C++.</li>
     </ul>
   </div>
 </div>
@@ -505,6 +619,383 @@ Aug 2016 - Sep 2020
   </div>
 </div>
 
+
+<!-- PROJECT SECTION -->
+<div class="content-container">
+  <p class="about-text">Projects</p>
+</div>
+
+<div class="project-gallery">
+  <!-- CARD 1 -->
+  <div class="project-card" onclick="openModal('modal-dmbpm')">
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Data Management.png" alt="Data Management" />
+    <div class="hover-title">Data Management and Business Process Modeling</div>
+  </div>
+
+  <!-- CARD 2 (Example) -->
+  <div class="project-card" onclick="openModal('modal-stats')">
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Stats.png" alt="Statistics in Business Analytics" />
+    <div class="hover-title">Predictive Modeling of Car Prices Using Regression Techniques</div>
+  </div>
+
+  <!-- CARD 3 (Example) -->
+  <div class="project-card" onclick="openModal('modal-predictive')">
+    <img src="5f872dbe-da44-4ff4-9049-b3b83d41feac.png" alt="Predictive Modeling" />
+    <div class="hover-title">Medical Insurance Premium Prediction<br>
+ Using Predictive Modeling</div>
+  </div>
+   
+  <!-- CARD 4 -->
+<div class="project-card" onclick="openModal('modal-forecast')">
+  <img src="b112345d-9da2-4a71-8581-c308b6932722.png" alt="Bike Forecasting Project" />
+  <div class="hover-title">Forecasting Weekly Demand Using Time Series</div>
+</div>
+
+<!-- CARD 5 -->
+<div class="project-card" onclick="openModal('modal-internet')">
+  <img src="2.png" alt="Internet Usage Risk Modeling" />
+  <div class="hover-title">Classifying Internet Usage Risk Using<br> Time Series Data</div>
+</div>
+
+</div>
+
+
+
+<!-- MODAL 1 -->
+<div id="modal-dmbpm" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-dmbpm')">&times;</span>
+    <h2 style="font-style: italic;">Data Management and Business Process Modeling</h2>
+    <p class="role-title">Problem Statement</p>
+    <div class="role-points">
+    Aloha Travels operated on manual booking and payment systems, resulting in frequent processing errors. Customer engagement relied on offline channels like phone calls and visits, reducing efficiency. Sales and customer data were stored on paper, limiting analytical capabilities. Manual workflows hindered optimal resource allocation and delayed service delivery. The absence of secure digital systems posed risks to data security and regulatory compliance.
+    </div>
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/One.svg"
+     alt="Project Diagram"
+     style="width:100%; max-width:600px; display:block; margin: 40px auto; padding: 20px;" />
+    <p class="role-title">Action</p>
+    <div class="role-points">
+Implemented an automated booking system integrated with a modern relational database to eliminate manual errors. Enabled online payments, CRM functionalities, and real-time data tracking for improved customer engagement. Strengthened data analytics, streamlined resource management, and enforced robust data security and compliance protocols.
+</div>
+    <div style="margin-bottom: 20px;"></div>
+<p class="role-title">Result</p>
+    <div class="role-points">
+    <ul>
+      <li>Streamlined Operations: Automation replaces manual processes, reducing human errors and speeding up the booking workflow for more efficient operations.</li>
+      <li>Enhanced Customer Experience: Personalized services based on customer data, along with 24/7 online booking access, improve convenience and satisfaction.</li>
+      <li>Data-Driven Decisions: The DBMS enables analytics and reports that support smarter decisions in marketing, agent performance, and resource management.</li>
+      <li>Increased Revenue Potential: Optimized resource use and global online reach allow for more bookings, boosting capacity and revenue.</li>
+      <li>Cost Reduction: Automation cuts labor and paper costs while minimizing financial losses due to manual errors.</li>
+      <li>Scalability: The system is built to handle larger volumes and complex data needs as the company grows.</li>
+      <li>Improved Security & Compliance: The DBMS offers stronger data protection and supports adherence to data privacy regulations.</li>
+    </ul>
+</div>
+    <p class="role-title">Tools</p>
+<div class="role-points">
+    <ul>
+      <li>SQL</li>
+      <li>Lucidchart</li>
+      <li>Excel</li>
+      <li>DBeaver</li>
+    </ul>
+</div>
+    <p class="role-title">Algorithms / Concepts Used</p>
+<div class="role-points">
+    <ul>
+      <li>Advanced SQL</li>
+      <li>ER Modeling</li>
+      <li>Database Normalization</li>
+      <li>BPMN</li>
+    </ul>
+</div>
+  </div>
+</div>
+
+<!-- MODAL 2 -->
+<div id="modal-stats" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-stats')">&times;</span>
+    <h2 style="font-style: italic;">Predictive Modeling of Car Prices Using Regression Techniques</h2>
+    <p class="role-title">Problem Statement</p>
+    <div class="role-points">
+    Accurate car price estimation is a critical task for manufacturers and sellers, yet it is often complicated by the interaction of various vehicle attributes. I aimed to develop a predictive model that quantifies the impact of technical and categorical features on car pricing, using regression-based analytical methods.
+    </div>
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Boxplots.png"
+     alt="Project Diagram"
+     style="width:100%; max-width:600px; display:block; margin: 40px auto; padding: 0px;" />
+    <p class="role-title">Dataset Description</p>
+    <div class="role-points">
+The dataset (carprice.csv) contains 199 observations and 26 variables, each representing characteristics of a unique car model. The target variable is car price, while features include engine size, car body type, brand, fuel type, and performance indicators. Some variables were redundant or had missing values, requiring preprocessing and transformation.
+</div>
+    <div style="margin-bottom: 20px;"></div>
+    <p class="role-title">Action</p>
+    <div class="role-points">
+The team used R to perform exploratory data analysis, handled missing values, and applied regression models to determine significant predictors. Techniques included correlation analysis, feature engineering, and model comparison to optimize prediction accuracy.
+</div>
+<div style="margin-bottom: 20px;"></div>
+<p class="role-title">Result</p>
+    <div class="role-points">
+    <ul>
+      <li><strong>Accurate Price Prediction Models Built - </strong>Developed multiple linear and lasso regression models to estimate car prices.
+Achieved strong predictive accuracy with R² values above 0.85.</li>
+      <li><strong>Key Price Drivers Identified - </strong>Engine size, horsepower, and car brand emerged as top predictors.
+Helped isolate the most influential variables for targeted marketing.</li>
+      <li><strong>Data-Driven Insights Enabled - </strong>Regression diagnostics and correlation analysis revealed pricing patterns.
+Enabled better strategic decision-making based on quantified feature impact.</li>
+      <li><strong>Improved Model Interpretability - </strong>Feature selection and regularization enhanced model clarity and performance.
+Reduced multicollinearity and improved generalizability of results.</li>
+      <li><strong>Customer Value Optimization - </strong>Analysis showed trade-offs between price, engine size, and fuel efficiency.
+Supports recommendations for value-based car selection strategies.</li>
+    </ul>
+</div>
+    <p class="role-title">Tools</p>
+<div class="role-points">
+<ul>
+  <li><strong>R –</strong> for data manipulation, modeling, and visualization</li>
+  <li><strong>ggplot2 –</strong> for custom visualizations and boxplots</li>
+  <li><strong>glmnet –</strong> for implementing lasso regression</li>
+  <li><strong>dplyr –</strong> for efficient data wrangling</li>
+</ul>
+</div>
+    <p class="role-title">Algorithms / Concepts Used</p>
+<div class="role-points">
+<ul>
+  <li><strong>Multiple Linear Regression –</strong> baseline predictive model for car pricing</li>
+  <li><strong>Lasso Regression –</strong> regularization technique to prevent overfitting and perform variable selection</li>
+  <li><strong>Feature Engineering –</strong> transforming and encoding variables for model input</li>
+  <li><strong>Correlation Analysis –</strong> identifying multicollinearity and variable relationships</li>
+  <li><strong>Model Selection using Adjusted R² & RMSE –</strong> choosing optimal models</li>
+  <li><strong>Outlier Detection via Boxplots –</strong> ensuring data integrity</li>
+  <li><strong>Data Cleaning and Type Conversion –</strong> handling “unknown” values and formatting issues</li>
+</ul>
+</div>
+  </div>
+</div>
+
+
+<!-- MODAL 3 -->
+<div id="modal-predictive" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-predictive')">&times;</span>
+    <h2 style="font-style: italic;">Medical Insurance Premium Prediction using Predictive Modeling</h2>
+    <p class="role-title">Problem Statement</p>
+    <div class="role-points">
+    Accurate prediction of medical insurance premiums is essential to ensure affordability for policyholders and profitability for insurers. This project develops a data-driven model that analyzes health and lifestyle variables to estimate premium costs. The approach enhances pricing transparency, supports effective risk management, and enables fair premium allocation for policyholders.
+    </div>
+
+<img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/KNN.png"
+     alt="Project Diagram"
+     style="width:100%; max-width:600px; display:block; margin: 20px auto; padding: 10px;" />
+
+     <p class="role-title">Dataset Description</p>
+    <div class="role-points">
+The dataset used is the Medical Insurance Prediction Dataset from Kaggle, comprising 25,000 records and 24 variables representing detailed health, lifestyle, and insurance attributes for individuals in India. Key features include age, BMI, smoking status, chronic disease history, and exercise habits. The target variable is patient_insurance_cost. During preprocessing, patient_year_last_admitted was dropped due to excessive missing data, and 990 rows with missing BMI values were removed to ensure model reliability.</div>
+    <div style="margin-bottom: 20px;"></div>
+    <p class="role-title">Action (SEMMA Methodology)</p> <div class="role-points"> <ul> <li><strong>Sample –</strong> Used the Medical Insurance Prediction Dataset from Kaggle with 25,000 rows and 24 variables, capturing health, lifestyle, and insurance data relevant to premium forecasting.</li> <li><strong>Explore –</strong> Performed data visualization, multivariate analysis, PCA, and outlier detection to understand variable relationships and distribution patterns.</li> <li><strong>Modify –</strong> Conducted preprocessing by removing the <code>patient_year_last_admitted</code> column and 990 rows with missing BMI values. Engineered binary variables for step count (>10,000) and BMI (>80) to better capture extremes.</li> <li><strong>Model –</strong> Built and compared models including regression, KNN, bootstrap, neural networks, boosted trees, and ensemble methods. Data was partitioned into training (60%), validation (20%), and test (20%) sets.</li> <li><strong>Assess –</strong> Evaluated model performance, identifying the Boosted Tree model as the most effective with R² > 0.95. <code>patient_weight</code> was found to be the most influential predictor.</li> </ul> </div>
+    <div style="margin-bottom: 20px;"></div>
+
+<img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Ensemble.png"
+     alt="Project Diagram"
+     style="width:50%; max-width:600px; display:block; margin: 20px auto; padding: 10px;" />
+
+<p class="role-title">Result</p> <div class="role-points"> <ul> <li><strong>Boosted Tree Model Built –</strong> Developed a high-performance predictive model using Boosted Trees to estimate insurance premiums.</li> <li><strong>Achieved High Accuracy –</strong> The model attained R² values exceeding 0.95 across training, validation, and test sets, confirming prediction reliability.</li> <li><strong>Key Driver Identified –</strong> <code>patient_weight</code> emerged as the most influential factor in premium estimation, surpassing other health metrics.</li> <li><strong>Enabled Strategic Pricing –</strong> Model outputs support competitive and fair premium setting, balancing profitability and customer value.</li> <li><strong>Improved Risk Profiling –</strong> Enhanced ability to identify high-risk individuals, aiding insurers in more effective financial risk management.</li> </ul> </div>
+<p class="role-title">Tools</p> <div class="role-points"> <ul> <li><strong>JMP Pro –</strong> for data preprocessing, modeling, visualization, and model evaluation</li> <li><strong>Excel –</strong> for exploratory data review and formatting</li> <li><strong>Kaggle –</strong> as the source platform for the insurance dataset</li> </ul> </div>
+<p class="role-title">Algorithms / Concepts Used</p> <div class="role-points"> <ul> <li><strong>Boosted Trees –</strong> primary model used for accurate premium prediction with high R² performance</li> <li><strong>Neural Networks –</strong> tested for capturing complex patterns in the dataset</li> <li><strong>K-Nearest Neighbors (KNN) –</strong> used as a non-parametric baseline model</li> <li><strong>Bootstrap Aggregation –</strong> applied for model stability and comparison</li> <li><strong>Multiple Regression –</strong> used for interpretability and baseline accuracy</li> <li><strong>PCA –</strong> applied for dimensionality reduction and variance explanation</li> <li><strong>Multivariate Analysis –</strong> to explore relationships between variables</li> <li><strong>Outlier Detection –</strong> used to retain valid extreme values impacting predictions</li> </ul> </div>
+  </div>
+</div>
+
+
+<!-- MODAL 4 -->
+<div id="modal-forecast" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-forecast')">&times;</span>
+    <h2 style="font-style: italic;">Forecasting Weekly Demand Using Time Series</h2>
+
+    <p class="role-title">Problem Statement</p>
+    <div class="role-points">
+      Forecasting demand based on temporal and environmental variables is essential for operational planning, pricing strategy, and capacity optimization. This project aims to predict weekly rental counts using time series forecasting techniques enriched with weather data and date-related covariates. The analysis focuses on capturing autocorrelations, identifying external influences, and selecting robust models for accurate multi-variable forecasting.
+    </div>
+
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Correlations.png"
+         alt="Autocorrelation Diagnostics"
+         style="width:60%; max-width:600px; display:block; margin: 40px auto;" />
+    <div style="text-align: center; font-style: italic;">Autocorrelation, PACF, and white noise tests to validate lag structure and stationarity</div>
+
+<div style="margin-bottom: 20px;"></div>
+
+    <p class="role-title">Dataset Description</p>
+    <div class="role-points">
+      The dataset, sourced from Kaggle, contains 8,760 hourly observations spanning one year with 14 variables. Features include temperature, humidity, solar radiation, date, and holiday indicators. To improve interpretability and focus on long-term patterns, the dataset was aggregated into weekly intervals, reducing noise and enabling effective decomposition into trend and seasonal components.
+    </div>
+
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Trend.png"
+         alt="Trend Component"
+         style="width:60%; max-width:600px; display:block; margin: 40px auto;" />
+    <div style="text-align: center; font-style: italic;">Trend extraction reveals clear seasonality and demand peaks during warmer periods</div>
+
+<div style="margin-bottom: 20px;"></div>
+
+    <p class="role-title">Action</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>Data Aggregation –</strong> Transformed hourly series into weekly data to improve model stability and visual clarity.</li>
+        <li><strong>Time Series Diagnostics –</strong> Applied ACF, PACF, and inverse ACF to determine lag dependencies and ARIMA order selection.</li>
+        <li><strong>Pre-whitening –</strong> ARIMA filters were fitted to explanatory variables to remove autocorrelation before cross-correlation analysis.</li>
+        <li><strong>Model Development –</strong> Implemented four exponential smoothing models and three ARIMAX configurations (ARIMAX 10, 20, 21) for comparative analysis.</li>
+        <li><strong>Evaluation –</strong> Model selection based on MAPE, AIC, and SBC. Residuals analyzed for white noise behavior to validate predictive reliability.</li>
+      </ul>
+    </div>
+
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Result.png"
+         alt="ARIMAX Model Evaluation"
+         style="width:100%; max-width:600px; display:block; margin: 40px auto;" />
+    <div style="text-align: center; font-style: italic;">Comparison of ARIMAX models across AIC, SBC, and autocorrelation metrics. ARIMAX 10 selected for best tradeoff.</div>
+
+<div style="margin-bottom: 20px;"></div>
+
+    <p class="role-title">Result</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>Model Accuracy –</strong> Simple Exponential Smoothing model had the lowest MAPE (17.9358), showing strength in univariate forecasting.</li>
+        <li><strong>ARIMAX Performance –</strong> ARIMAX10 outperformed more complex models (ARIMAX20, ARIMAX21) with AIC of 660.0482 and SBC of 671.7556.</li>
+        <li><strong>Lag Insights –</strong> Cross-correlation identified key variables (e.g., solar radiation, temperature) that influenced target at lag 0 and lag 1.</li>
+        <li><strong>Outlier Detection –</strong> All models managed 4–5 outliers effectively, with ARIMAX21 slightly underperforming in generalizability.</li>
+        <li><strong>Deployment Suitability –</strong> The final model provides a framework adaptable for real-world demand forecasting where environmental inputs are dynamic.</li>
+      </ul>
+    </div>
+
+    <p class="role-title">Tools</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>JMP Pro –</strong> for time series decomposition, model fitting, diagnostics, and visualization</li>
+        <li><strong>Excel –</strong> for data reshaping, aggregation, and preprocessing prior to modeling</li>
+        <li><strong>Kaggle –</strong> data source for hourly weather and rental demand records</li>
+      </ul>
+    </div>
+
+    <p class="role-title">Algorithms / Concepts Used</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>Time Series Analysis –</strong> including trend-seasonal decomposition and lag diagnostics</li>
+        <li><strong>Autocorrelation and Cross-Correlation –</strong> ACF/PACF plots and pre-whitening techniques</li>
+        <li><strong>ARIMA & ARIMAX –</strong> models used for capturing internal structure and exogenous effects</li>
+        <li><strong>Exponential Smoothing Models –</strong> evaluated across trend types for univariate forecasts</li>
+        <li><strong>Model Selection –</strong> based on AIC, SBC, MAPE, and residual noise independence</li>
+        <li><strong>Outlier and Lag Analysis –</strong> used for robustness testing and feature relevance interpretation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL 5 -->
+<div id="modal-internet" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-internet')">&times;</span>
+    <h2 style="font-style: italic;">Classifying Internet Usage Risk Using Time Series Data</h2>
+
+    <p class="role-title">Problem Statement</p>
+    <div class="role-points">
+      Problematic internet use (PUI) in adolescents poses risks to mental health, sleep, and social well-being. This project focused on building a data-driven classification pipeline capable of identifying children at risk of PUI using passive wearable sensor data and detailed demographic/survey responses. The primary goal was to uncover latent behavioral signals that could guide early intervention strategies for digital wellness.
+    </div>
+
+    <div style="margin-bottom: 20px;"></div>
+
+    <p class="role-title">Dataset Description</p>
+    <div class="role-points">
+      The dataset includes 986 labeled samples from the Child Mind Institute’s PUI competition. Each entry links to a parquet file with accelerometer and light-based time-series data (X, Y, Z, ENMO, anglez, light) and a corresponding row in a CSV file with 82 demographic and behavioral columns. The target, sii, was transformed from a multi-class to binary classification label. Time-series features were automatically extracted using tsfresh, merged with survey features via ID joins, and further cleaned to eliminate high-missing or highly-correlated attributes.
+    </div>
+
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Heatmap.png"
+         alt="Correlation Heatmap"
+         style="width:100%; max-width:600px; display:block; margin: 40px auto;" />
+    <div style="text-align: center; font-style: italic;">
+      Correlation heatmap showing relationships between demographic, survey, and sensor-based features.<br>
+      High-correlation blocks guided multicollinearity reduction during preprocessing.
+    </div>
+
+    <div style="margin-bottom: 20px;"></div>
+
+    <p class="role-title">Action</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>Time Series Feature Engineering –</strong> Applied <code>tsfresh</code> on parquet time series to generate over 130 domain-agnostic statistical features, including energy, entropy, RMS, mean changes, and autocorrelation, across axes and light signals.</li>
+        <li><strong>Preprocessing –</strong> Performed categorical encoding using one-hot encoding for survey columns, filled missing values using <code>SimpleImputer</code>, and scaled all numeric values using both MinMax and Standard Scalers for testing impact on model behavior.</li>
+        <li><strong>Feature Selection –</strong> Used SHAP value ranking, permutation importance, and correlation heatmaps to reduce dimensionality and retain the most predictive and uncorrelated features for final modeling.</li>
+        <li><strong>Model Development –</strong> Trained multiple models including <code>RandomForest</code> for benchmarking and <code>XGBClassifier</code> for optimized performance using grid-based hyperparameter tuning and early stopping on validation folds.</li>
+        <li><strong>Evaluation Strategy –</strong> Focused on maximizing weighted F1-score due to mild class imbalance; used stratified train-test split and threshold shifting to align prediction boundaries with optimal sensitivity.</li>
+        <li><strong>Interpretability –</strong> Integrated SHAP summary plots, ICE curves, and partial dependence plots to analyze the marginal impact of each feature on model decision boundaries and identify monotonic vs. non-monotonic relationships.</li>
+      </ul>
+    </div>
+
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/SHAP.png"
+         alt="SHAP Summary Plot"
+         style="width:100%; max-width:600px; display:block; margin: 40px auto;" />
+    <div style="text-align: center; font-style: italic;">
+      SHAP summary plot highlighting the top 20 most influential features driving model predictions.<br>
+      Feature value gradients reveal how each input increases or decreases PUI risk.
+    </div>
+
+    <div style="margin-bottom: 20px;"></div>
+
+    <p class="role-title">Result</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>Final Model –</strong> Reduced-feature XGBoost model achieved a weighted F1 score of 0.80 on held-out test data, using only the top 20 features ranked by SHAP values, with accuracy also reaching 80% after threshold optimization.</li>
+        <li><strong>Model Comparison –</strong> Models using combined time-series and survey features consistently outperformed those using demographics alone, confirming the predictive value of wearable sensor inputs.</li>
+        <li><strong>Key Predictors –</strong> Top contributors included internet hours per day, raw sleep disorder scores (SDS), physical height, maximum ambient light exposure, and BMI—all variables with behavioral and physiological relevance.</li>
+        <li><strong>Interpretability Findings –</strong> SHAP and PDP visualizations revealed nonlinear relationships for predictors like screen time and SDS score, and ICE curves captured subtle interaction effects between multiple variables.</li>
+        <li><strong>Deployment-Readiness –</strong> The model architecture supports integration into health monitoring platforms or educational screening systems, given its ability to interpret results and generalize across individuals.</li>
+      </ul>
+    </div>
+
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Pairplot.png"
+         alt="Pairplot of Top Features"
+         style="width:100%; max-width:600px; display:block; margin: 40px auto;" />
+    <div style="text-align: center; font-style: italic;">
+      Pairplot illustrating distributional shapes and interaction patterns among key predictors.<br>
+      Provides visual validation of non-linear separability and clustering in selected variables.
+    </div>
+
+    <div style="margin-bottom: 20px;"></div>
+
+    <p class="role-title">Tools</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>Python (Google Colab)</strong> – used for end-to-end workflow from EDA to model interpretability and final submission generation.</li>
+        <li><strong>TSFresh</strong> – extracted 100+ time-series features automatically from X/Y/Z/anglez/light signals for machine learning readiness.</li>
+        <li><strong>XGBoost / Scikit-learn</strong> – used for model training, performance evaluation, hyperparameter tuning, and threshold testing.</li>
+        <li><strong>SHAP & pycebox</strong> – enabled global and local interpretability using SHAP summary plots, ICE plots, and PDPs for top predictors.</li>
+        <li><strong>pandas / seaborn / matplotlib</strong> – core libraries for data wrangling, visualization, and metric plotting.</li>
+        <li><strong>pyarrow</strong> – used for efficient reading and batch processing of parquet-formatted time-series sensor files.</li>
+      </ul>
+    </div>
+
+    <p class="role-title">Algorithms / Concepts Used</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>Gradient Boosting (XGBoost)</strong> – final model chosen for robustness, interpretability, and performance on non-linear data.</li>
+        <li><strong>Random Forest</strong> – served as a baseline ensemble to benchmark against XGBoost improvements and gain initial feature insights.</li>
+        <li><strong>Automated Time-Series Feature Extraction</strong> – leveraged <code>tsfresh</code> to convert raw signals into statistical features without manual curation.</li>
+        <li><strong>Model Interpretability</strong> – used SHAP, permutation importance, ICE, and PDPs to explain how each feature affects prediction probabilities.</li>
+        <li><strong>Threshold Optimization</strong> – shifted classification threshold from 0.5 to 0.5109 to maximize F1-score for imbalanced output.</li>
+        <li><strong>Multicollinearity Handling</strong> – removed redundant predictors using Pearson correlation analysis and visual heatmaps.</li>
+        <li><strong>F1 Optimization & Class Balance</strong> – used weighted F1 score and confusion matrix calibration to ensure recall/specificity balance.</li>
+      </ul>
+    </div>
+
+    <p class="role-title">Use Cases</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>Clinical Pre-Screening –</strong> Identify adolescents at risk for digital dependency using non-invasive wearable and survey-based data.</li>
+        <li><strong>Health-Tech Integration –</strong> Embed model within mobile health platforms or behavioral monitoring tools for real-time feedback.</li>
+        <li><strong>Behavioral Research –</strong> Provide evidence linking sensor-recorded physical behavior to screen-time-related psychological outcomes.</li>
+        <li><strong>Educational Policy –</strong> Support digital wellness programs in schools by identifying high-risk students and tailoring outreach strategies.</li>
+        <li><strong>Parental Reporting –</strong> Translate model insights into interpretable feedback that helps parents monitor tech usage impacts.</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
   <!-- Script: Toggle underline when nav links are clicked -->
   <script>
@@ -517,5 +1008,23 @@ Aug 2016 - Sep 2020
       });
     });
   </script>
+
+<script>
+  function openModal(id) {
+    document.getElementById(id).style.display = "block";
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    const modals = document.querySelectorAll(".modal");
+    modals.forEach(modal => {
+      if (event.target == modal) modal.style.display = "none";
+    });
+  };
+</script>
+
 </body>
 </html>
