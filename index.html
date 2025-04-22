@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
@@ -9,17 +10,10 @@
     }
 
     body {
-      background-color: #F9F8F5;
-      margin: 0;
-      min-height: 100vh;
-      font-family: 'Manrope', sans-serif;
-      background-image:
-        repeating-linear-gradient(to right, #ffffff 0px, #ffffff 2px, transparent 2px, transparent 40px),
-        repeating-linear-gradient(to bottom, #ffffff 0px, #ffffff 2px, transparent 2px, transparent 40px);
-      background-size: 37.5px 37.5px;
-      padding-bottom: 100px;
-    }
-
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Manrope', sans-serif;
+}
     .navbar-wrapper {
       position: sticky;
       top: 0;
@@ -167,7 +161,7 @@
   position: relative;
   height: 2000px;
   width: 100px;
-  margin: 15px 0 100px 250px; /* top right bottom left */
+  margin: 15px 0 80px 250px; /* top right bottom left */
 }
 
 .timeline-line {
@@ -302,21 +296,13 @@
   gap: 10px; /* space between bullets */
 }
 
-
-.project-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  padding: 40px 75px;
-}
-
 .project-card {
   position: relative;
   width: 340px;
   height: 240px;
   cursor: pointer;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 0px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
   transition: transform 0.2s ease;
 }
@@ -330,17 +316,17 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 8px;
+  border-radius: 0px;
 }
 
 .hover-title {
   position: absolute;
   bottom: 0;
-  background: rgba(229, 72, 96, 0.85);
+  background: rgba(0, 0, 0, 0.7);
   color: white;
   width: 100%;
   text-align: centre;
-  padding: 10px;
+  padding: 100px;
   padding-left: 20px;   /* adjust as needed */
   padding-right: 20px;
   font-weight: 600;
@@ -419,9 +405,218 @@
   line-height: 1.6;
 }
 
+.projects-container {
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+.projects-container .content-container {
+  padding-bottom: 20px; /* Adjust spacing below the title */
+}
+
+.project-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px 0px 30px 50px; /* top right bottom left */
+}
+
+/* From Uiverse.io by gharsh11032000 */ 
+.animated-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 36px;
+  border: 4px solid;
+  border-color: transparent;
+  font-size: 18px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: #e54860;
+  box-shadow: 0 0 0 2px #e54860;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 24px;
+  fill: #e54860;
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 16px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #e54860;
+  border-radius: 100px;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #ffffff;
+  border-radius: 100px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+.animated-button:hover svg {
+  fill: #ffffff;
+}
+
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px #e54860;
+}
+
+.animated-button:hover .circle {
+  width: 320px;
+  height: 320px;
+  opacity: 1;
+}
+
+.light-bg {
+  background-color: #F9F8F5;
+  background-image:
+    repeating-linear-gradient(to right, #ffffff 0px, #ffffff 2px, transparent 2px, transparent 40px),
+    repeating-linear-gradient(to bottom, #ffffff 0px, #ffffff 2px, transparent 2px, transparent 40px);
+  background-size: 37.5px 37.5px;
+}
+
+.dark-bg {
+  background-color: #1e1e1e;
+  background-image:
+    repeating-linear-gradient(to right, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 2px, transparent 2px, transparent 40px),
+    repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 2px, transparent 2px, transparent 40px);
+  background-size: 37.5px 37.5px;
+}
+
+/* Custom Contact Form - Matching Portfolio Theme */
+.form-container {
+  max-width: 700px;
+  margin: 30px auto;
+  background-color: #1e1e1e;
+  padding: 30px 50px 30px 30px;  /* top right bottom left */
+  border-left: 5px solid #e54860;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+
+.heading {
+  display: block;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.form-container .form .input {
+  color: #ffffff;
+  width: 100%;
+  background-color: #2b2b2b;
+  border: none;
+  outline: none;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  transition: all 0.2s ease-in-out;
+  border-left: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.form-container .form .input:focus {
+  border-left: 5px solid #e54860;
+}
+
+.form-container .form .textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: #2b2b2b;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  resize: none;
+  max-height: 150px;
+  margin-bottom: 20px;
+  border-left: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-container .form .textarea:focus {
+  border-left: 5px solid #e54860;
+}
+
+.form-container .form .button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-container .form .button-container .send-button {
+  background: #e54860;
+  padding: 10px 24px;
+  color: #ffffff;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-container .form .button-container .send-button:hover {
+  background: transparent;
+  border: 1px solid #e54860;
+  color: #e54860;
+}
+
+/* Offset scroll position for anchor links */
+#about, #projects, #resume, #contact {
+  scroll-margin-top: 80px;
+}
   </style>
 </head>
 <body>
+  <div class="light-bg">
   <!-- ✅ Sticky wrapper for nav and line -->
   <div class="navbar-wrapper">
     <div class="navbar">
@@ -429,9 +624,9 @@
       <div class="nav-links">
         <a href="#" class="active">Home</a>
         <a href="#about" class="nav-link">About</a>
-        <a href="#">Projects</a>
-        <a href="#">Resume</a>
-        <a href="#">Contact</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
     <div class="top-line"></div>
@@ -619,47 +814,119 @@
   </div>
 </div>
 
-
 <!-- PROJECT SECTION -->
-<div class="content-container">
-  <p class="about-text">Projects</p>
-</div>
+<div class="projects-container">
+  <div class="content-container" id="projects">
+    <p class="about-text">Projects</p>
+  </div>
 
-<div class="project-gallery">
-  <!-- CARD 1 -->
+  <div class="project-gallery">
+    <!-- CARD 1 -->
   <div class="project-card" onclick="openModal('modal-dmbpm')">
-    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Data Management.png" alt="Data Management" />
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/1st Project.png" alt="Data Management" />
     <div class="hover-title">Data Management and Business Process Modeling</div>
   </div>
 
-  <!-- CARD 2 (Example) -->
-  <div class="project-card" onclick="openModal('modal-stats')">
-    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Stats.png" alt="Statistics in Business Analytics" />
-    <div class="hover-title">Predictive Modeling of Car Prices Using Regression Techniques</div>
-  </div>
+  <!-- CARD 4 -->
+<div class="project-card" onclick="openModal('modal-forecast')">
+  <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Fourth Project.png" alt="Bike Forecasting Project" />
+  <div class="hover-title">Forecasting Weekly Demand Using Time Series</div>
+</div>
 
   <!-- CARD 3 (Example) -->
   <div class="project-card" onclick="openModal('modal-predictive')">
-    <img src="5f872dbe-da44-4ff4-9049-b3b83d41feac.png" alt="Predictive Modeling" />
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Third Project.png" alt="Predictive Modeling" />
     <div class="hover-title">Medical Insurance Premium Prediction<br>
  Using Predictive Modeling</div>
   </div>
    
-  <!-- CARD 4 -->
-<div class="project-card" onclick="openModal('modal-forecast')">
-  <img src="b112345d-9da2-4a71-8581-c308b6932722.png" alt="Bike Forecasting Project" />
-  <div class="hover-title">Forecasting Weekly Demand Using Time Series</div>
-</div>
+  <!-- CARD 2 (Example) -->
+  <div class="project-card" onclick="openModal('modal-stats')">
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Second Project.png" alt="Statistics in Business Analytics" />
+    <div class="hover-title">Predictive Modeling of Car Prices Using Regression Techniques</div>
+  </div>
 
 <!-- CARD 5 -->
 <div class="project-card" onclick="openModal('modal-internet')">
-  <img src="2.png" alt="Internet Usage Risk Modeling" />
+  <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Fifth Project.png" alt="Internet Usage Risk Modeling" />
   <div class="hover-title">Classifying Internet Usage Risk Using<br> Time Series Data</div>
 </div>
 
+<!-- CARD 6 -->
+<div class="project-card" onclick="openModal('modal-energy-trends')">
+  <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Sixth Project.png" alt="Continental Energy Analysis" />
+  <div class="hover-title">Visualizing Continental Energy Trends & Funding Flows Using Tableau</div>
+</div>
+  </div>
 </div>
 
+<!-- RESUME SECTION -->
+<div class="content-container" id="resume" style="margin-top: 30px;">
+  <p class="about-text">Resume</p>
+  <div style="font-family: 'Roboto', sans-serif; font-size: 1rem; line-height: 1.6; color: #000000; max-width: 950px; margin-top: 20px; margin-bottom: 30px;">
+    I am a Business Analytics and Project Management professional with experience in Identity & Risk Analysis, ML/AI Engineering, and Dashboard Development. I’ve supported Data Analytics, Project Management, and Risk Advisory functions across multiple industries. My work helps organizations automate workflows, improve compliance, and turn data into actionable insights.
+  </div>
 
+<!-- From Uiverse.io by gharsh11032000 --> 
+<button class="animated-button">
+  <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+    ></path>
+  </svg>
+  <span class="text">Download Pallavi's Resume</span>
+  <span class="circle"></span>
+  <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+    ></path>
+  </svg>
+</button>
+</div>
+
+<div class="dark-bg" id="contact">
+  <div class="content-container" style="padding-top: 50px; padding-bottom: 120px; display: flex; justify-content: space-between; align-items: flex-start; gap: 50px; flex-wrap: wrap;">
+    
+    <!-- LEFT: Thank You and Contact Icons -->
+    <div style="flex: 1; min-width: 300px;">
+      <h1 style="font-family: sans-serif; font-size: 4rem; font-weight: 600; margin-bottom: 40px; color: white;">
+        Thank you :)
+      </h1>
+      <p class="about-text" style="color: white; font-weight: 300;">Let's Connect</p>
+
+      <!-- Social Icons -->
+      <div style="margin-top: 20px; display: flex; gap: 30px; align-items: center;">
+        <a href="https://www.linkedin.com/in/pallavi-amarlapudi/" target="_blank" style="color: white; font-size: 2rem;">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:pallavi.amarlapudi.work@gmail.com" target="_blank" style="color: white; font-size: 2rem;">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://github.com/pallaviamarlapudi" target="_blank" style="color: white; font-size: 2rem;">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Contact Form Card -->
+    <div style="flex: 1; max-width: 920px; margin-left: 60px;">
+      <div class="form-container">
+<form action="https://formspree.io/f/mpwdaegb" method="POST" class="form">
+  <span class="heading">I would love to hear from you</span>
+  
+  <input name="name" placeholder="Name" type="text" class="input" required>
+  <input name="email" placeholder="Email" type="email" class="input" required>
+  <textarea name="message" placeholder="Say Hello" rows="5" class="textarea" required></textarea>
+  
+  <div class="button-container">
+    <button type="submit" class="send-button">Send</button>
+  </div>
+</form>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- MODAL 1 -->
 <div id="modal-dmbpm" class="modal">
@@ -992,6 +1259,111 @@ The dataset used is the Medical Insurance Prediction Dataset from Kaggle, compri
         <li><strong>Behavioral Research –</strong> Provide evidence linking sensor-recorded physical behavior to screen-time-related psychological outcomes.</li>
         <li><strong>Educational Policy –</strong> Support digital wellness programs in schools by identifying high-risk students and tailoring outreach strategies.</li>
         <li><strong>Parental Reporting –</strong> Translate model insights into interpretable feedback that helps parents monitor tech usage impacts.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 6 -->
+<div id="modal-energy-trends" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-energy-trends')">&times;</span>
+    <h2 style="font-style: italic;">Visualizing Continental Energy Trends & Funding Flows in Tableau</h2>
+
+    <p class="role-title">Problem Statement</p>
+    <div class="role-points">
+      This project aimed to build an interactive Tableau dashboard for analyzing continental energy consumption, renewable generation trends, and investment dynamics from 1990 to 2022. The goal was to enable advanced exploratory analysis using calculated fields, parameterized views, and blended datasets to uncover key demand shifts and investment inefficiencies across technologies and regions.
+    </div>
+
+    <div style="margin-bottom: 20px;"></div>
+
+    <p class="role-title">Dataset Description</p>
+    <div class="role-points">
+      The dashboard integrates three structured datasets:
+      <ul>
+        <li>Global energy consumption by continent (TWh)</li>
+        <li>Renewable energy generation by region and source (solar, wind, hydro, biofuels)</li>
+        <li>Investment in renewable energy technologies (in billions USD)</li>
+      </ul>
+      Datasets were preprocessed in Tableau Prep for format normalization, null handling, pivoting (wide-to-long), and metadata tagging. Relationships were defined in Tableau's logical layer to preserve row-level detail while allowing flexible analysis across grain levels.
+    </div>
+
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Asia.png"
+         alt="Energy consumption by continent"
+         style="width:100%; max-width:600px; display:block; margin: 40px auto;" />
+    <div style="text-align: center; font-style: italic;">
+      Stacked time-series bar chart revealing Asia’s sharp rise in energy consumption post-2005.
+    </div>
+
+    <div style="margin-bottom: 20px;"></div>
+
+    <p class="role-title">Action</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>Advanced Visual Design –</strong> Created layered dashboards combining bar charts, area plots, and packed bubbles with synchronized filtering and custom tooltips.</li>
+        <li><strong>Level of Detail (LOD) Expressions –</strong> Used FIXED and INCLUDE LODs to calculate normalized investment-to-generation ratios and region-specific CAGR without altering view granularity.</li>
+        <li><strong>Dynamic Parameters –</strong> Integrated user-driven parameter controls to switch between energy types, year ranges, and normalized vs. absolute values.</li>
+        <li><strong>Data Blending with Relationships –</strong> Used Tableau’s new relationship model (vs. traditional joins) to combine fact tables across different granularities (e.g., investments vs. generation) while preserving context.</li>
+        <li><strong>Table Calculations –</strong> Applied WINDOW_SUM, RUNNING_AVG, and RANK to generate trendlines, moving averages, and region rankings over time.</li>
+      </ul>
+    </div>
+
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Renewable.png"
+         alt="Renewable Generation by Region"
+         style="width:100%; max-width:600px; display:block; margin: 40px auto;" />
+    <div style="text-align: center; font-style: italic;">
+      Area chart split by region and technology with dynamic legends and filterable timelines using dashboard actions.
+    </div>
+
+    <div style="margin-bottom: 20px;"></div>
+
+    <p class="role-title">Result</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>Growth Pattern Discovery –</strong> Identified Asia Pacific as the fastest-scaling energy producer, with >4% CAGR in solar and wind since 2010, driven by policy and industrial expansion.</li>
+        <li><strong>Investment Imbalance –</strong> Bubble charts exposed disproportionate capital flow into solar and wind, revealing temporal lags (3–5 years) between investment peaks and actual energy yield.</li>
+        <li><strong>Regional Saturation –</strong> Used dual-axis charts and rank-index tables to show hydropower flattening in Europe, contrasting with exponential growth curves in Africa and Asia.</li>
+        <li><strong>User Exploration –</strong> The final dashboard enabled drill-down exploration by region, year, and energy source, powered by interactive filters, highlights, and context-aware tooltips.</li>
+      </ul>
+    </div>
+
+    <img src="https://raw.githubusercontent.com/pallaviamarlapudi/pallaviamarlapudi.github.io/main/Investment.png"
+         alt="Investment vs Generation"
+         style="width:100%; max-width:600px; display:block; margin: 40px auto;" />
+    <div style="text-align: center; font-style: italic;">
+      Packed bubble chart with measure-based sizing and color-coded tech segments, revealing capital disparity across renewable types.
+    </div>
+
+    <div style="margin-bottom: 20px;"></div>
+
+    <p class="role-title">Tools</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>Tableau Desktop (2023.3+)</strong> – Core platform for advanced dashboard design, interactivity, and calculated analytics.</li>
+        <li><strong>Tableau Prep Builder</strong> – Used for pivoting, row-level aggregation, NULL cleansing, and dataset shaping before import.</li>
+        <li><strong>Calculated Fields</strong> – Implemented advanced expressions using IF logic, ZN, INDEX(), and WINDOW functions for visual metrics.</li>
+        <li><strong>LOD Expressions</strong> – Enabled fixed-rank and context-independent metrics across nested hierarchies (region → continent).</li>
+        <li><strong>Dynamic Parameters & Filters</strong> – Empowered end-users to toggle KPIs, normalize metrics, and define visual cutoffs.</li>
+      </ul>
+    </div>
+
+    <p class="role-title">Concepts Used</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>LOD Calculations</strong> – FIXED/INCLUDE/EXCLUDE expressions for normalized KPIs without affecting granularity.</li>
+        <li><strong>Dual-Axis Synchronization</strong> – Used for overlaying investment and generation trends with transparent reference bands.</li>
+        <li><strong>Context Filters & Action Filters</strong> – Created responsive dashboards that adapt to user selection hierarchies.</li>
+        <li><strong>Data Relationships (Logical Layer)</strong> – Replaced traditional joins with Tableau relationships to retain row-level integrity.</li>
+        <li><strong>Calculated Ranks & Indices</strong> – Used RANK_DENSE and INDEX to visualize regional leaders dynamically.</li>
+      </ul>
+    </div>
+
+    <p class="role-title">Use Cases</p>
+    <div class="role-points">
+      <ul>
+        <li><strong>Executive Dashboards –</strong> Enable policy makers to monitor funding efficiency and generation outcomes regionally.</li>
+        <li><strong>Investor Insights –</strong> Help private investors identify optimal allocation by evaluating output per billion dollars invested.</li>
+        <li><strong>Education & Communication –</strong> Make complex regional energy data interpretable for academic or public audiences.</li>
       </ul>
     </div>
   </div>
